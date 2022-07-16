@@ -17,6 +17,8 @@ void main() {
 
 
 class MyApp extends StatelessWidget {
+  static final String title = 'Upload to GitHub';
+  
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -123,7 +125,7 @@ class HomeScreen extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(20), 
             child: Text(
-              "Modo semplice per trovare \ndegli alimenti",
+              "Modo semplice per cercare \ndegli alimenti",
               style: Theme.of(context).textTheme.headlineSmall,
             ),
           ),
