@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:food_project/constants.dart';
 import 'package:food_project/details_screen.dart';
 import 'package:food_project/details_screen1.dart';
@@ -9,34 +10,32 @@ import 'package:food_project/widget/food_card.dart';
 import 'package:get/get.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(GetMaterialApp(home:MyApp()));
 }
 //void main() => runApp(MyApp());
 
 
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
+  static final String title = 'Upload to GitHub';
+  
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Food App',
       theme: ThemeData(
-        fontFamily: "Poppins",
-        scaffoldBackgroundColor: kWhiteColor,
-        primaryColor: kPrimaryColor,
-      ),
-      home: const HomeScreen(),
+          fontFamily: "Poppins",
+          scaffoldBackgroundColor: kWhiteColor,
+          primaryColor: kPrimaryColor,                       
+          ),
+      home: HomeScreen(),   //HomeScreen(),
     );
   }
 }
 
  
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
-
    
   @override
   Widget build(BuildContext context) {
@@ -49,21 +48,21 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       floatingActionButton: Container(
-        padding: const EdgeInsets.all(10), 
+        padding: EdgeInsets.all(10), 
         height: 80, 
         width: 80,  
         decoration: BoxDecoration(
           shape: BoxShape.circle,
-          color: kPrimaryColor.withValues(alpha: .26),
+          color: kPrimaryColor.withOpacity(.26),
         ),
         child: Container(
-          padding: const EdgeInsets.all(20),
-          decoration: const BoxDecoration(
+          padding: EdgeInsets.all(20),
+          decoration: BoxDecoration(
             shape: BoxShape.circle,
             color: kPrimaryColor,
           ),
           child: InkWell(
-          child: const Icon(Icons.add),
+          child: Icon(Icons.add),
         onTap: (){
       //action code when clicked
       print("The icon is clicked");
@@ -82,23 +81,23 @@ class HomeScreen extends StatelessWidget {
           child: Row(
               children: [
                 Container(
-                  width: 80,
-                  height: 80,
+                  width: 60,
+                  height: 60,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(50),
+                    borderRadius: BorderRadius.circular(30),
                     color: Colors.black,
                   ),
                   child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(50),
+                      borderRadius: BorderRadius.circular(30),
                     )
                   ),
                   // ignore: avoid_returning_null_for_void
-                  onPressed: () =>Get.to(()=>const LoginScreen()), child: const Text("Login",
+                  onPressed: () =>Get.to(()=>LoginScreen()), child: Text("Login",
                   style: TextStyle(
-                    fontSize: 11,
-                    color: Colors.black
+                    fontSize: 10,
+                    color: Colors.white
                   ),
                   ),
                   ),
@@ -115,7 +114,7 @@ class HomeScreen extends StatelessWidget {
             child: Align(
               alignment: Alignment.topRight,
               child: InkWell(
-            child: const Icon(Icons.menu),
+            child: Icon(Icons.menu),
             onTap: (){
       //action code when clicked
       print("The icon is clicked");
@@ -144,8 +143,8 @@ class HomeScreen extends StatelessWidget {
           ),
           Container(
             alignment: Alignment.centerLeft,
-            margin: const EdgeInsets.symmetric(vertical: 20, horizontal: 20), 
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15), 
+            margin: EdgeInsets.symmetric(vertical: 20, horizontal: 20), 
+            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15), 
             height: 50,
             width: double.infinity,
             decoration: BoxDecoration(
@@ -155,7 +154,7 @@ class HomeScreen extends StatelessWidget {
            
             child: TextField(
               controller: textcontroller1,
-              decoration: const InputDecoration(
+              decoration: InputDecoration(
                 hintText: 'inserisci il nome del prodotto da cercare',
                 //border: OutlineInputBorder()
                 ),
@@ -168,15 +167,22 @@ class HomeScreen extends StatelessWidget {
             child: Row(
               children: <Widget>[
                 GestureDetector(
-                   onTap: () { Navigator.push( context, MaterialPageRoute(builder: (context) { return const DetailsScreen(); } ), ); }, child:
-                  
-                FoodCard(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) {
+                        return DetailsScreen();
+                      }
+                      ),
+                    );
+                  },
+               child: FoodCard(
                     press: () {  //press : () {
                   WidgetsBinding.instance.addPostFrameCallback((_) {
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) {
-                        return const DetailsScreen();
+                        return DetailsScreen();
                       }
                       ),
                     );
@@ -192,15 +198,23 @@ class HomeScreen extends StatelessWidget {
                       "La carne è alimento plastico ricco di aminoacidi essenziali e povero di vitamine. ",
                 ),
                 ),
-               GestureDetector(
-                   onTap: () { Navigator.push( context, MaterialPageRoute(builder: (context) { return const DetailsScreen1(); } ), ); }, child: 
-               FoodCard(
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) {
+                        return DetailsScreen1();
+                      }
+                      ),
+                    );
+                  },
+               child: FoodCard(
                 press: () {  //press : () {
                   WidgetsBinding.instance.addPostFrameCallback((_) {
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) {
-                        return const DetailsScreen1();
+                        return DetailsScreen1();
                       }
                       ),
                     );
@@ -215,16 +229,24 @@ class HomeScreen extends StatelessWidget {
                   description:
                       "La frutta è un alimento ad alta densità nutritiva e a bassa densità calorica.   ",
                 ),
-               ),
-            GestureDetector(
-                   onTap: () { Navigator.push( context, MaterialPageRoute(builder: (context) { return const DetailsScreen2(); } ), ); }, child:    
-               FoodCard(
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) {
+                        return DetailsScreen2();
+                      }
+                      ),
+                    );
+                  }, 
+                child: FoodCard(
                   press: () {  //press : () {
                   WidgetsBinding.instance.addPostFrameCallback((_) {
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) {
-                        return const DetailsScreen2();
+                        return DetailsScreen2();
                       }
                       ),
                     );
@@ -239,8 +261,8 @@ class HomeScreen extends StatelessWidget {
                   description:
                       "La verdura è una fonte di principi nutritivi e fibre naturali. ",
                 ),
-            ),  
-                const SizedBox(width: 20),
+                ),
+                SizedBox(width: 20),
               ],
             ),
           ),

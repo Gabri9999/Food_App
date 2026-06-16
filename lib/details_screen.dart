@@ -5,8 +5,6 @@ import 'package:food_project/constants.dart';
 
 
 class DetailsScreen extends StatelessWidget {
-  const DetailsScreen({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +21,7 @@ class DetailsScreen extends StatelessWidget {
                     Navigator.of(context).popUntil((route) => route.isFirst);   //Navigator.pop(context);
                   }, //backwward
                   child: InkWell(
-  child: const Icon(Icons.arrow_left),
+  child: Icon(Icons.arrow_left),
   onTap: (){
       //action code when clicked
       print("The icon is clicked");
@@ -32,7 +30,7 @@ class DetailsScreen extends StatelessWidget {
 ),
                 ),
                 InkWell(
-  child: const Icon(Icons.menu),
+  child: Icon(Icons.menu),
   onTap: (){
       print("The icon is clicked");
       //action code when clicked
@@ -43,16 +41,16 @@ class DetailsScreen extends StatelessWidget {
               ],
             ),
             Container(
-              margin: const EdgeInsets.symmetric(vertical: 30),
-              padding: const EdgeInsets.all(6),
+              margin: EdgeInsets.symmetric(vertical: 30),
+              padding: EdgeInsets.all(6),
               height: 305,
               width: 305,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 color: kSecondaryColor,
               ),
               child: Container(
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage("assets/images/carne.png"),
                     fit: BoxFit.cover,
@@ -73,7 +71,7 @@ class DetailsScreen extends StatelessWidget {
                       TextSpan(
                         text: "È costituita da: masse muscolari,tessuto adiposo (grasso),un certo quantitativo di grasso",
                         style: TextStyle(
-                          color: kTextColor.withValues(alpha: .5),
+                          color: kTextColor.withOpacity(.5),
                         ),
                       ),
                     ],
@@ -88,31 +86,31 @@ class DetailsScreen extends StatelessWidget {
                 )
               ],
             ),
-            const SizedBox(height: 20),
-            const Text(
+            SizedBox(height: 20),
+            Text(
               "La carne è alimento plastico ricco di aminoacidi essenziali e povero di vitamine che, consumato con moderazione e di buona qualità, può presentare alcuni effetti benefici.",
             ),
-            const Spacer(),
+            Spacer(),
             Padding(
-              padding: const EdgeInsets.only(bottom: 30),
+              padding: EdgeInsets.only(bottom: 30),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Container(
-                    padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 27),
+                    padding: EdgeInsets.symmetric(vertical: 20, horizontal: 27),
                     decoration: BoxDecoration(
-                      color: kPrimaryColor.withValues(alpha: .19),
+                      color: kPrimaryColor.withOpacity(.19),
                       borderRadius: BorderRadius.circular(27),
                     ),
                     child: Row(
                       children: <Widget>[
                         Text(
                           "Add to bag",
-                          style: Theme.of(context).textTheme.labelLarge,
+                          style: Theme.of(context).textTheme.button,
                         ),
-                        const SizedBox(width: 30),
+                        SizedBox(width: 30),
                         InkWell(
-              child: const Icon(Icons.arrow_right),
+              child: Icon(Icons.arrow_right),
               onTap: (){
                      //action code when clicked
                  print("The icon is clicked");
@@ -126,16 +124,16 @@ class DetailsScreen extends StatelessWidget {
                     width: 80,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: kPrimaryColor.withValues(alpha: .26),
+                      color: kPrimaryColor.withOpacity(.26),
                     ),
                     child: Stack(
                       alignment: Alignment.center,
                       children: <Widget>[
                         Container(
-                          padding: const EdgeInsets.all(15),
+                          padding: EdgeInsets.all(15),
                           height: 60,
                           width: 60,
-                          decoration: const BoxDecoration(
+                          decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             color: kPrimaryColor,
                           ),
@@ -152,7 +150,7 @@ class DetailsScreen extends StatelessWidget {
                     );
                   },
                 child: InkWell(
-  child: const Icon(Icons.badge),
+  child: Icon(Icons.badge),
   onTap: (){
       //action code when clicked
       //print("The icon is clicked");
@@ -176,7 +174,7 @@ class DetailsScreen extends StatelessWidget {
                             alignment: Alignment.center,
                             height: 28,
                             width: 28,
-                            decoration: const BoxDecoration(
+                            decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               color: kWhiteColor,
                             ),
@@ -184,7 +182,7 @@ class DetailsScreen extends StatelessWidget {
                               "0",
                               style: Theme.of(context)
                                   .textTheme
-                                  .labelLarge
+                                  .button
                                   ?.copyWith(color: kPrimaryColor, fontSize: 16),
                             ),
                           ),
