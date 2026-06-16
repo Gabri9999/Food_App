@@ -9,10 +9,11 @@ class FoodCard extends StatelessWidget {   //CATALOG SCREEN
   final String calories;
   final String description;
   final Function press;
+  final String type;
    //final Function press;
 
   const FoodCard({
-    required Key key,
+    Key ? key,
     required this.title,
     required this.ingredient,
     required this.image,
@@ -20,6 +21,7 @@ class FoodCard extends StatelessWidget {   //CATALOG SCREEN
     required this.calories,
     required this.description,
     required this.press,
+    this.type = ""
        //required this.press,
   }) : super(key: key);
 
@@ -27,8 +29,8 @@ class FoodCard extends StatelessWidget {   //CATALOG SCREEN
   FoodCard(
                   press: () {},
                   key: UniqueKey(),
-                  ingredient: "salad",
-                  title: "Vegan salad bowl",
+                  ingredient: "protein",
+                  title: "Meat",
                   price: 20,
                   image: "assets/images/carne.png",
                   calories: "420Kcal",
@@ -38,8 +40,8 @@ class FoodCard extends StatelessWidget {   //CATALOG SCREEN
   FoodCard(
                   press: () {},
                   key: UniqueKey(),
-                  ingredient: "salad",
-                  title: "Vegan salad bowl",
+                  ingredient: "carb",
+                  title: "Fruit",
                   image: "assets/images/frutta.png",
                   price: 20,
                   calories: "420Kcal",
@@ -50,8 +52,8 @@ class FoodCard extends StatelessWidget {   //CATALOG SCREEN
   FoodCard(
                   press: () {},
                   key: UniqueKey(),
-                  ingredient: "salad",
-                  title: "Vegan salad bowl",
+                  ingredient: "plant",
+                  title: "Vegetables",
                   image: "assets/images/verdura.png",
                   price: 20,
                   calories: "420Kcal",
@@ -65,10 +67,13 @@ class FoodCard extends StatelessWidget {   //CATALOG SCREEN
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: press(),
+      onTap: (){
+          print("clicked");
+          press();
          //onTap: press(),
+      },
       child: Container(
-        margin: EdgeInsets.only(left: 20),
+        margin: const EdgeInsets.only(left: 20),
         height: 400,
         width: 270,
         child: Stack(
@@ -82,7 +87,7 @@ class FoodCard extends StatelessWidget {   //CATALOG SCREEN
                 width: 250,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(34),
-                  color: kPrimaryColor.withOpacity(.06),
+                  color: kPrimaryColor.withValues(alpha: .06),
                 ),
               ),
             ),
@@ -95,7 +100,7 @@ class FoodCard extends StatelessWidget {   //CATALOG SCREEN
                 width: 181,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: kPrimaryColor.withOpacity(.15),
+                  color: kPrimaryColor.withValues(alpha: .15),
                 ),
               ),
             ),
@@ -128,7 +133,7 @@ class FoodCard extends StatelessWidget {   //CATALOG SCREEN
             Positioned(
               top: 201,
               left: 40,
-              child: Container(
+              child: SizedBox(
                 width: 210,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -140,18 +145,18 @@ class FoodCard extends StatelessWidget {   //CATALOG SCREEN
                     Text(
                       "With $ingredient",
                       style: TextStyle(
-                        color: kTextColor.withOpacity(.4),
+                        color: kTextColor.withValues(alpha: .4),
                       ),
                     ),
-                    SizedBox(height: 16),
+                    const SizedBox(height: 16),
                     Text(
                       description,
                       maxLines: 3,
                       style: TextStyle(
-                        color: kTextColor.withOpacity(.65),
+                        color: kTextColor.withValues(alpha: .65),
                       ),
                     ),
-                    SizedBox(height: 16),
+                    const SizedBox(height: 16),
                     Text(
                       calories,
                     )

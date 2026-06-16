@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:food_project/constants.dart';
-import 'package:food_project/main.dart';
 
 import 'cart_screen.dart';
 
 
 class DetailsScreen2 extends StatelessWidget {
+  const DetailsScreen2({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,7 +23,7 @@ class DetailsScreen2 extends StatelessWidget {
                     Navigator.of(context).popUntil((route) => route.isFirst);
                   }, //backwward
                   child: InkWell(
-  child: Icon(Icons.arrow_left),
+  child: const Icon(Icons.arrow_left),
   onTap: (){
       //action code when clicked
       print("The icon is clicked");
@@ -31,7 +32,7 @@ class DetailsScreen2 extends StatelessWidget {
 ),
                 ),
                 InkWell(
-  child: Icon(Icons.menu),
+  child: const Icon(Icons.menu),
   onTap: (){
       //action code when clicked
       print("The icon is clicked");
@@ -41,16 +42,16 @@ class DetailsScreen2 extends StatelessWidget {
               ],
             ),
             Container(
-              margin: EdgeInsets.symmetric(vertical: 30),
-              padding: EdgeInsets.all(6),
+              margin: const EdgeInsets.symmetric(vertical: 30),
+              padding: const EdgeInsets.all(6),
               height: 305,
               width: 305,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 shape: BoxShape.circle,
                 color: kSecondaryColor,
               ),
               child: Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage("assets/images/verdura.png"),
                     fit: BoxFit.cover,
@@ -71,7 +72,7 @@ class DetailsScreen2 extends StatelessWidget {
                       TextSpan(
                         text: "Con il termine verdura si fa riferimento alle parti di un vegetale, come detto sia coltivato sia selvatico, commestibili: dalle radici al gambo o fusto fino alle foglie e ai germogli.",
                         style: TextStyle(
-                          color: kTextColor.withOpacity(.5),
+                          color: kTextColor.withValues(alpha: .5),
                         ),
                       ),
                     ],
@@ -86,31 +87,31 @@ class DetailsScreen2 extends StatelessWidget {
                 )
               ],
             ),
-            SizedBox(height: 20),
-            Text(
+            const SizedBox(height: 20),
+            const Text(
               "La verdura è una fonte di principi nutritivi e fibre naturali indispensabili per una sana alimentazione. È importante assumerla quotidianamente perchè aiuta nella cura e nella prevenzione di numerose patologie.",
             ),
-            Spacer(),
+            const Spacer(),
             Padding(
-              padding: EdgeInsets.only(bottom: 30),
+              padding: const EdgeInsets.only(bottom: 30),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Container(
-                    padding: EdgeInsets.symmetric(vertical: 20, horizontal: 27),
+                    padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 27),
                     decoration: BoxDecoration(
-                      color: kPrimaryColor.withOpacity(.19),
+                      color: kPrimaryColor.withValues(alpha: .19),
                       borderRadius: BorderRadius.circular(27),
                     ),
                     child: Row(
                       children: <Widget>[
                         Text(
                           "Add to bag",
-                          style: Theme.of(context).textTheme.button,
+                          style: Theme.of(context).textTheme.labelLarge,
                         ),
-                        SizedBox(width: 30),
+                        const SizedBox(width: 30),
                         InkWell(
-              child: Icon(Icons.arrow_right),
+              child: const Icon(Icons.arrow_right),
               onTap: (){
                      //action code when clicked
                  print("The icon is clicked");
@@ -124,16 +125,16 @@ class DetailsScreen2 extends StatelessWidget {
                     width: 80,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: kPrimaryColor.withOpacity(.26),
+                      color: kPrimaryColor.withValues(alpha: .26),
                     ),
                     child: Stack(
                       alignment: Alignment.center,
                       children: <Widget>[
                         Container(
-                          padding: EdgeInsets.all(15),
+                          padding: const EdgeInsets.all(15),
                           height: 60,
                           width: 60,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             shape: BoxShape.circle,
                             color: kPrimaryColor,
                           ),
@@ -149,7 +150,7 @@ class DetailsScreen2 extends StatelessWidget {
                     );
                   },
                 child: InkWell(
-  child: Icon(Icons.badge),
+  child: const Icon(Icons.badge),
   onTap: (){
       //action code when clicked
       //print("The icon is clicked");
@@ -172,7 +173,7 @@ class DetailsScreen2 extends StatelessWidget {
                             alignment: Alignment.center,
                             height: 28,
                             width: 28,
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               shape: BoxShape.circle,
                               color: kWhiteColor,
                             ),
@@ -180,7 +181,7 @@ class DetailsScreen2 extends StatelessWidget {
                               "0",
                               style: Theme.of(context)
                                   .textTheme
-                                  .button
+                                  .labelLarge
                                   ?.copyWith(color: kPrimaryColor, fontSize: 16),
                             ),
                           ),

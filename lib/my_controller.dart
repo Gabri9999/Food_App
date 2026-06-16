@@ -1,48 +1,51 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class MyController extends GetxController{
 
-  var frutta = 0.obs; //variabile di stato (che cambia, e posso vedere il cambiamento anche nello UI , perche' cambia lo stato)
-  var verdura = 0.obs;
-  var carne = 0.obs;
-  int get sum=>frutta.value+verdura.value+carne.value;
+  var counters = [
+  0.obs, // carne
+  0.obs, // frutta
+  0.obs, // verdura
+];
+  
+  int get sum => counters.fold(
+  0,
+  (total, item) => total + item.value,
+);
   //ora ho bisogno di metodi per fare increase e decrease dei bottoni che ho creato
 
-   increment(){
-      carne.value++;
-      
+   increment(int i){
+      counters[i].value++;
    }
 
-   decrement(){
-       if(carne.value<=0){
+   decrement(int i){
+       if(counters[i].value<=0){
           Get.snackbar(
-          "Stai comprando la carne", "Errore: Non puo' essere meno di zero",
-          icon:Icon(Icons.add_alarm),
+          "Stai aggiungendo un prodotto al carrello", "Errore: Non puo' essere meno di zero",
+          icon:const Icon(Icons.add_alarm),
           barBlur: 20,
           isDismissible: true,
-          duration: Duration(seconds: 3),
+          duration: const Duration(seconds: 4),
           );
        }
        else{
-      carne.value--;
+      counters[i].value--;
        }
    }
 
-   increment1(){
+  /* increment1(){
       frutta.value++;
-      
    }
 
    decrement1(){
        if(frutta.value<=0){
           Get.snackbar(
           "Stai comprando la frutta", "Errore: Non puo' essere meno di zero",
-          icon:Icon(Icons.add_alarm),
+          icon:const Icon(Icons.add_alarm),
           barBlur: 20,
           isDismissible: true,
-          duration: Duration(seconds: 3),
+          duration: const Duration(seconds: 3),
           );
        }
        else{
@@ -52,22 +55,21 @@ class MyController extends GetxController{
 
    increment2(){
       verdura.value++;
-      
    }
 
    decrement2(){
        if(verdura.value<=0){
           Get.snackbar(
           "Stai comprando la verdura", "Errore: Non puo' essere meno di zero",
-          icon:Icon(Icons.add_alarm),
+          icon:const Icon(Icons.add_alarm),
           barBlur: 20,
           isDismissible: true,
-          duration: Duration(seconds: 3),
+          duration: const Duration(seconds: 3),
           );
        }
        else{
       verdura.value--;
        }
-   }
+   } */
 
 }

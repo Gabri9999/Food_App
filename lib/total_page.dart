@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -17,22 +16,22 @@ class TotalPage extends StatelessWidget{
           child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-             Text("Totale Articoli",
+             const Text("Totale Articoli",
              style: TextStyle(
               fontSize: 30,
               color: Colors.blue,
              ),),
-             SizedBox(height: 20,),
+             const SizedBox(height: 20,),
               //value del costo totale e una variabile di stato quindi ci vuole di nuovo OBX
-              Obx(() => Text("${c.sum.toString()}",
-                style: TextStyle(
+              Obx(() => Text(c.sum.toString(),
+                style: const TextStyle(
                   fontSize: 30,
                 ),
                 )),
-             SizedBox(height: 20,),
+             const SizedBox(height: 20,),
              Container(
-                  width: 100,
-                  height: 100,
+                  width: 102,
+                  height: 102,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(50),
                     color: Colors.black,
@@ -44,10 +43,10 @@ class TotalPage extends StatelessWidget{
                     )
                   ),
                   // ignore: avoid_returning_null_for_void
-                  onPressed: () =>Get.back(), child: Text("Torna indietro",
+                  onPressed: () =>Get.back(), child: const Text("Torna indietro",
                   style: TextStyle(
-                    fontSize: 15,
-                    color: Colors.white
+                    fontSize: 13,
+                    color: Colors.black
                   ),
                   ),
                   ),

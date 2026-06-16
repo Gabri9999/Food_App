@@ -16,8 +16,8 @@ class CategoryTitle extends StatelessWidget {
       padding: const EdgeInsets.only(left: 20, right: 30),
       child: Text(
         title,
-        style: Theme.of(context).textTheme.button?.copyWith(
-              color: active ? kPrimaryColor : kTextColor.withOpacity(.4),
+        style: Theme.of(context).textTheme.labelLarge?.copyWith(
+              color: active ? kPrimaryColor : kTextColor.withValues(alpha: .4),
             ),
       ),
     );

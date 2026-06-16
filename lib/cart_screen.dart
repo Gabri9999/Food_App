@@ -1,5 +1,4 @@
 //import 'package:flutter/cupertino.dart';
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:food_project/my_controller.dart';
 import 'package:food_project/total_page.dart';
@@ -34,7 +33,7 @@ class CartScreen extends StatelessWidget {
                     Navigator.of(context).popUntil((route) => route.isFirst);
                   }, //backwward
                   child: InkWell(
-  child: Icon(Icons.arrow_left),
+  child: const Icon(Icons.arrow_left),
   onTap: (){
       //action code when clicked
       print("The icon is clicked");
@@ -43,7 +42,7 @@ class CartScreen extends StatelessWidget {
 ),
                 ),
                 InkWell(
-  child: Icon(Icons.menu),
+  child: const Icon(Icons.menu),
   onTap: (){
       //action code when clicked
       print("The icon is clicked");
@@ -54,27 +53,42 @@ class CartScreen extends StatelessWidget {
             ),
 
 
+//()=>c.increment()
 
-
-              Expanded(
+               Expanded(
                 child: ListView.builder(
                   itemCount: FoodCard.foodcards.length,
                   itemBuilder: (context,index){
                     return Card(
-                      child: ListView(
-                            shrinkWrap: true,
-                      
-                       children: [ Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                        children: [ CircleAvatar(
-                          backgroundImage: AssetImage(FoodCard.foodcards[index].image),
-                      ),
-                       ] ),
-                       ] ) ); } ),),   
+                margin: const EdgeInsets.symmetric(vertical: 8),
+    child: ListTile(
+      leading: CircleAvatar(
+      backgroundImage: AssetImage(
+      FoodCard.foodcards[index].image,
+    ),
+  ),
+  title: Text(
+    FoodCard.foodcards[index].title,
+  ),
+  trailing: Row(
+    mainAxisSize: MainAxisSize.min,
+    children: [
+      IconButton(
+        onPressed: ()=>c.decrement(index),
+        icon: const Icon(Icons.remove),
+      ),
+      Obx(() => Text(c.counters[index].value.toString())),
+      IconButton(
+        onPressed: ()=>c.increment(index),
+        icon: const Icon(Icons.add),
+      ),
+    ],
+  ),
+), ); }, ),),   
                                    //qui dovrei mettere il circleavatar
                                     //QUI HO MESSO Expanded(Container()), prima di Row(
                                     
-                                   Row(
+                         /*          Row(
                                         children:[ Container(
                                         width: 50,
                                         height: 40,
@@ -83,16 +97,16 @@ class CartScreen extends StatelessWidget {
                                           color: Colors.black,
                                         ),
                                         // ignore: avoid_returning_null_for_void
-                                        child: IconButton(onPressed: ()=>c.increment(), icon: Icon(Icons.add,color: Colors.white,))
+                                        child: IconButton(onPressed: ()=>c.increment(), icon: const Icon(Icons.add,color: Colors.white,))
                                        ),
                                      
-                                     SizedBox(width: 20,),
-                                    Obx(() => Text("${c.carne.toString()}",
-                                    style: TextStyle(
+                                     const SizedBox(width: 20,),
+                                    Obx(() => Text(c.carne.toString(),
+                                    style: const TextStyle(
                                       fontSize: 30,
                                     ),
                                     )), //Obx serve per accedere alla variabile insalata within a widget (in un widget)
-                                     SizedBox(width: 20,),
+                                     const SizedBox(width: 20,),
                                      Container(
                                       width: 50,
                                       height: 40,
@@ -100,12 +114,12 @@ class CartScreen extends StatelessWidget {
                                         borderRadius: BorderRadius.circular(25),
                                         color: Colors.black,
                                       ),
-                                       child: IconButton(onPressed: ()=>c.decrement(), icon: Icon(Icons.remove,color: Colors.white,))
+                                       child: IconButton(onPressed: ()=>c.decrement(), icon: const Icon(Icons.remove,color: Colors.white,))
                                      ),
                                         ]
-              ), 
+              ), */
                   
-               SizedBox(height: 20,),
+            /*   const SizedBox(height: 20,),
 
 
 
@@ -118,16 +132,16 @@ class CartScreen extends StatelessWidget {
                                           color: Colors.black,
                                         ),
                                         // ignore: avoid_returning_null_for_void
-                                        child: IconButton(onPressed: ()=>c.increment1(), icon: Icon(Icons.add,color: Colors.white,))
+                                        child: IconButton(onPressed: ()=>c.increment1(), icon: const Icon(Icons.add,color: Colors.white,))
                                        ),
                                      
-                                     SizedBox(width: 20,),
-                                    Obx(() => Text("${c.frutta.toString()}",
-                                    style: TextStyle(
+                                     const SizedBox(width: 20,),
+                                    Obx(() => Text(c.frutta.toString(),
+                                    style: const TextStyle(
                                       fontSize: 30,
                                     ),
                                     )), //Obx serve per accedere alla variabile insalata within a widget (in un widget)
-                                     SizedBox(width: 20,),
+                                     const SizedBox(width: 20,),
                                      Container(
                                       width: 50,
                                       height: 40,
@@ -135,14 +149,14 @@ class CartScreen extends StatelessWidget {
                                         borderRadius: BorderRadius.circular(25),
                                         color: Colors.black,
                                       ),
-                                       child: IconButton(onPressed: ()=>c.decrement1(), icon: Icon(Icons.remove,color: Colors.white,))
+                                       child: IconButton(onPressed: ()=>c.decrement1(), icon: const Icon(Icons.remove,color: Colors.white,))
                                      ),
                                         ]
               ), 
                   
-               SizedBox(height: 20,),
+               const SizedBox(height: 20,),  */
 
-              Row(
+  /*            Row(
               children: [
                 
                  Container(
@@ -153,15 +167,15 @@ class CartScreen extends StatelessWidget {
                     color: Colors.black,
                   ),
                   // ignore: avoid_returning_null_for_void
-                  child: IconButton(onPressed: ()=>c.increment2(), icon: Icon(Icons.add,color: Colors.white,))
+                  child: IconButton(onPressed: ()=>c.increment2(), icon: const Icon(Icons.add,color: Colors.white,))
                  ),
-                 SizedBox(width: 20,),
-                Obx(() => Text("${c.verdura.toString()}",
-                style: TextStyle(
+                 const SizedBox(width: 20,),
+                Obx(() => Text(c.verdura.toString(),
+                style: const TextStyle(
                   fontSize: 30,
                 ),
                 )), //Obx serve per accedere alla variabile frutta within a widget (in un widget)
-                 SizedBox(width: 20,),
+                 const SizedBox(width: 20,),
                  Container(
                   width: 50,
                   height: 40,
@@ -169,10 +183,10 @@ class CartScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(25),
                     color: Colors.black,
                   ),
-                   child: IconButton(onPressed: ()=>c.decrement2(), icon: Icon(Icons.remove,color: Colors.white,))
+                   child: IconButton(onPressed: ()=>c.decrement2(), icon: const Icon(Icons.remove,color: Colors.white,))
                  ),
               ],
-            ), 
+            ), */
  
 
          //qui metto le parentesi       
@@ -183,10 +197,11 @@ class CartScreen extends StatelessWidget {
            
            
              Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  width: 100,
-                  height: 100,
+                  width: 102,
+                  height: 102,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(50),
                     color: Colors.black,
@@ -198,16 +213,16 @@ class CartScreen extends StatelessWidget {
                     )
                   ),
                   // ignore: avoid_returning_null_for_void
-                  onPressed: () =>Get.to(()=>TotalPage()), child: Text("Totale Articoli",
+                  onPressed: () =>Get.to(()=>TotalPage()), child: const Text("Totale Articoli",
                   style: TextStyle(
                     fontSize: 15,
-                    color: Colors.white
+                    color: Colors.black
                   ),
                   ),
                   ),
                   ),
               ],
-                ),
+                ), 
         ],
              ),
       ),
